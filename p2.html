@@ -5,183 +5,74 @@
     body {
         background: rgb(226, 226, 226);
     }
-    #rct1 {
-        background: blue;
-        height: 100px;
-        width: 200px;
-        position: absolute;
-        top: 70%;
-        left: 10%;
-    }
 
     #sqr1 {
         background: red;
         height: 100px;
         width: 100px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-    }
-
-    #rct2 {
-        background: green;
-        height: 50px;
-        width: 100px;
-        position: absolute;
-        top: 70%;
-        left: 60%;
+        position: relative;
     }
 
     #sqr2 {
-        background: yellow;
-        height: 50px;
-        width: 50px;
-        position: absolute;
-        top: 50%;
-        left: 30%;
+        background: red;
+        height: 100px;
+        width: 100px;
+        position: relative;
     }
 
     #sqr3 {
-        background: black;
-        height: 75px;
-        width: 75px;
-        position: absolute;
-        top: 15%;
-        left: 50%;
-    }
-
-    #tri1 {
-        height: 0px;
-        width: 0px;
-        position: absolute;
-        top: 10%;
-        left: 20%;
-        border-left: 25px solid transparent;
-        border-right: 25px solid transparent;
-        border-bottom: 50px solid orangered;
-    }
-
-    #tri2 {
-        height: 0px;
-        width: 0px;
-        position: absolute;
-        top: 30%;
-        left: 70%;
-        border-left: 25px solid transparent;
-        border-right: 25px solid transparent;
-        border-bottom: 50px solid royalblue;
-    }
-
-    #tri3 {
-        height: 0px;
-        width: 0px;
-        position: absolute;
-        top: 40%;
-        left: 10%;
-        border-left: 25px solid transparent;
-        border-right: 25px solid transparent;
-        border-bottom: 50px solid yellowgreen;
-    }
-
-    #par1 {
+        background: red;
+        height: 100px;
         width: 100px;
-        height: 50px;
-        position: absolute;
-        top: 50%;
-        left: 20%;
-        transform: skew(20deg);
-        background: rgb(110, 83, 209);
+        position: relative;
     }
 
-    #par2 {
+    #sqr4 {
+        background: red;
+        height: 100px;
         width: 100px;
-        height: 50px;
-        position: absolute;
-        top: 60%;
-        left: 80%;
-        transform: skew(20deg);
-        background: rgb(199, 115, 6);
+        position: relative;
     }
+
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-    function padZero(num) {
-        var size = 2;
-        var s = num +"";
-        while (s.length < size) s = "0" + s;
-        return s;
-    }
-
-    function startTimer(milliseconds, seconds, minutes){
-        timer = setInterval(function (){
-            milliseconds++;
-            if (milliseconds >= 60) {
-                milliseconds = 0;
-                seconds++;
-                if (seconds >= 60) {
-                    seconds = 0;
-                    minutes++;
-                }
-            }
-            // sets the text for the timer
-            var timeStr = padZero(minutes) + ":" + padZero(seconds) + ":" + padZero(milliseconds)
-            $(document).ready(function(){
-                $("#time").text(timeStr);
-            });
-        }, 10)
-        timer;
-    }
-
-    function stop(){
-        clearInterval(timer);
-    }
-
-    function reset(){
-        clearInterval(timer);
-        $("#time").text("00:00:00");
-        $('.shapes').empty();
-    }
-
     function addShapes(){
         var sqr1 = '<div id="sqr1"></div>';
         var sqr2 = '<div id="sqr2"></div>';
         var sqr3 = '<div id="sqr3"></div>';
         var sqr4 = '<div id="sqr4"></div>';
-        var shapesArray = [sqr1, sqr2, sqr3, sqr4];
-        var rndNumShapes = Math.floor((Math.random() * 10) + 1); //random number between 1 and 5 shapes
-        console.log("Number of Shapes: " + rndNumShapes);
-        var shuffled = shapesArray.sort(() => Math.random()); // shuffle 
-        var selected = shuffled.slice(0, rndNumShapes) ; //get sub-array of first elements AFTER shuffle
-        console.log("Shapes selected: " + selected.length);
-        $(".shapes").append(selected);
-        return rndNumShapes; // return number of shapes to know when to stop
-    }
-
-    function start(){
-        startTimer(0, 0, 0);
-        var numShapes = addShapes();
-        clicks = 0;
+        $(".shapes").append(sqr1,sqr2,sqr3,sqr4);
+        var bodyWidth = document.body.clientWidth
+        var bodyHeight = document.body.clientHeight;
         var shapesIDArray = ["#sqr1", "#sqr2", "#sqr3", "#sqr4"]
         shapesIDArray.forEach(element => {
-            $(element).click(function(){
-                $(element).hide();
-                clicks++;
-                console.log("clicks " + clicks);
-                if(clicks == numShapes){
-                    stop();
-                    console.log("stopped");
-                }
-            });
+            var randPosX = Math.floor((Math.random()*bodyWidth));
+            var randPosY = Math.floor((Math.random()*bodyHeight));
+            $(element).css('left', randPosX);
+            $(element).css('top', randPosY); 
+        });
+    }
+
+    function animateShapes(){
+        var shapesIDArray = ["#sqr1", "#sqr2", "#sqr3", "#sqr4"]
+        var bodyWidth = document.body.clientWidth
+        var bodyHeight = document.body.clientHeight;
+        shapesIDArray.forEach(element => {
+            var randPosX = Math.floor((Math.random()*bodyWidth));
+            var randPosY = Math.floor((Math.random()*bodyHeight));
+            $(element).animate({
+                left: randPosX,
+                top: randPosY
+            }, 1000);
         });
     }
 
 </script>
 </head>
-<body>
-    <h1 id="time">00:00:00</h1>
-    <button id="start" onclick="start()">Start</button>
-    <button id="clear" onclick="reset()">Reset</button>
+<body onload="addShapes()">
+    <button id="start" onclick="animateShapes()">Move Shapes</button>
     <div class="shapes"></div>
 </body>
 </html>
