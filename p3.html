@@ -1,0 +1,42 @@
+<!doctype html>
+<head>
+  <title>Problem 3</title>
+  <style>
+    body {
+        background: rgb(226, 226, 226);
+    }
+
+    #rectangle {
+        background: red;
+        height: 100px;
+        width: 200px;
+        position: relative;
+    }
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+
+function addShape(x, y){
+    var shape = '<div id="rectangle"></div>'
+    var colorR = Math.floor((Math.random() * 256));
+    var colorG = Math.floor((Math.random() * 256));
+    var colorB = Math.floor((Math.random() * 256));
+    $(".shapes").append(shape);
+    console.log(x, y);
+    $("#rectangle").css('top', y);
+    $("#rectangle").css('left', x);
+    $("#rectangle").css("background-color", "rgb(" + colorR + "," + colorG + "," + colorB + ")");
+}
+$(document).click(function(e){
+    $('.shapes').empty();
+    var x = e.pageX;
+    var y = e.pageY;
+    addShape(x, y);
+});
+
+</script>
+</head>
+<body>
+ <div class="shapes"></div>
+</body>
+</html>
