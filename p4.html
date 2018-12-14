@@ -22,9 +22,16 @@
 
     function addShapes(){
         var rectanglePos = $("#rectangle").position();
+        var rectangleLeft = rectangle.left;
+        var rectangleRight = +rectangle.left
+        var rectangleRight = rectangle.left + 400;
+        var rectangleTop = rectangle.top;
+        var rectangleBot = +rectangleTop;
+        var rectangleBot = rectangleTop + 200;
         console.log("Rectangle width: " + rectanglePos.left + " - " + (rectanglePos.left + 400) +
         " Rectangle height: " + rectanglePos.top + " - " + (rectanglePos.top + 200))
-        var squaresIN = 0;
+        
+        var sqrsIN = 0;
         var sqr1 = '<div id="sqr1"></div>';
         var sqr2 = '<div id="sqr2"></div>';
         var sqr3 = '<div id="sqr3"></div>';
@@ -35,11 +42,12 @@
         var sqr8 = '<div id="sqr8"></div>';
         var sqr9 = '<div id="sqr9"></div>';
         var sqr10 = '<div id="sqr10"></div>';
-        $(".squares").append(sqr1,sqr2,sqr3,sqr4,sqr5,sqr6,sqr7,sqr8,sqr9,sqr10);
+        $(".sqrs").append(sqr1,sqr2,sqr3,sqr4,sqr5,sqr6,sqr7,sqr8,sqr9,sqr10);
         var bodyWidth = document.body.clientWidth
         var bodyHeight = document.body.clientHeight;
         var shapesIDArray = ["#sqr1", "#sqr2", "#sqr3", "#sqr4", "#sqr5",
         "#sqr6", "#sqr7", "#sqr8", "#sqr9", "#sqr10"]
+
         shapesIDArray.forEach(element => {
             var randPosX = Math.floor((Math.random()*bodyWidth));
             var randPosY = Math.floor((Math.random()*bodyHeight));
@@ -52,15 +60,15 @@
                 'position': 'relative'
             });
             
-            var squarePos = $(element).position();
-            console.log("Square width: " + squarePos.left + " - " + (squarePos.left + 25) +
-        " Square height: " + squarePos.top + " - " + (squarePos.top + 25))
-            if( (squarePos.left >= rectanglePos.left) &&
-            ((squarePos.left + 25) <= (rectangle.left + 400)) &&
-            (squarePos.top >= rectanglePos.top) &&
-            ((squarePos.top + 25) <= (rectanglePos.top + 200)) ){
-                squaresIN ++;
-                console.log("Squares in: " + squaresIN)
+            var sqrPos = $(element).position();
+            var sqrLeft = sqrPos.left;
+            var sqrRight = +sqrLeft + 25;
+            var sqrTop = sqrPos.top;
+            var sqrBot = +sqrTop + 25;
+            console.log("Square width: " + sqrPos.left + " - " + sqrRight +
+            " Square height: " + sqrTop + " - " + sqrBot)
+            if(sqrLeft >= rectangleLeft){
+                console.log("test");
             }
         });
     }
@@ -73,7 +81,7 @@ $( document ).on( "mousemove", function( event ) {
 <body>
     <button id="start" onclick="addShapes()">Launch</button>
     <div id="rectangle"></div>
-    <div class="squares"></div>
+    <div class="sqrs"></div>
     <div id="log"></div>
 </body>
 </html>
