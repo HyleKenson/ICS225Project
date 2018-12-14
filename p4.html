@@ -1,0 +1,40 @@
+<!doctype html>
+<head>
+  <title>Problem 4</title>
+  <style>
+    body {
+        background: rgb(226, 226, 226);
+    }
+
+    #rectangle {
+        border-style: solid;
+        border-width: 5px;
+        height: 100px;
+        width: 200px;
+        position: relative;
+    }
+  </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+
+function addShape(x, y){
+    var shape = '<div id="rectangle"></div>'
+    $(".shapes").append(shape);
+    console.log(x, y);
+    $("#rectangle").css('top', y);
+    $("#rectangle").css('left', x);
+
+}
+$(document).click(function(e){
+    $('.shapes').empty();
+    var x = e.pageX;
+    var y = e.pageY;
+    addShape(x, y);
+});
+
+</script>
+</head>
+<body>
+ <div id="rectangle"></div>
+</body>
+</html>
