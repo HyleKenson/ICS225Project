@@ -8,72 +8,33 @@
 
     #rectangle {
         border-style: solid;
-        border-width: 3px;
-        height: 200px;
-        width: 400px;
-        top: 300px;
-        left: 300px;
+        border-width: 5px;
+        height: 100px;
+        width: 200px;
         position: relative;
     }
-
   </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 
-    function addShapes(){
-        var rectanglePos = $("#rectangle").position();
-        console.log("Rectangle width: " + rectanglePos.left + " - " + (rectanglePos.left + 400) +
-        " Rectangle height: " + rectanglePos.top + " - " + (rectanglePos.top + 200))
-        var squaresIN = 0;
-        var sqr1 = '<div id="sqr1"></div>';
-        var sqr2 = '<div id="sqr2"></div>';
-        var sqr3 = '<div id="sqr3"></div>';
-        var sqr4 = '<div id="sqr4"></div>';
-        var sqr5 = '<div id="sqr5"></div>';
-        var sqr6 = '<div id="sqr6"></div>';
-        var sqr7 = '<div id="sqr7"></div>';
-        var sqr8 = '<div id="sqr8"></div>';
-        var sqr9 = '<div id="sqr9"></div>';
-        var sqr10 = '<div id="sqr10"></div>';
-        $(".squares").append(sqr1,sqr2,sqr3,sqr4,sqr5,sqr6,sqr7,sqr8,sqr9,sqr10);
-        var bodyWidth = document.body.clientWidth
-        var bodyHeight = document.body.clientHeight;
-        var shapesIDArray = ["#sqr1", "#sqr2", "#sqr3", "#sqr4", "#sqr5",
-        "#sqr6", "#sqr7", "#sqr8", "#sqr9", "#sqr10"]
-        shapesIDArray.forEach(element => {
-            var randPosX = Math.floor((Math.random()*bodyWidth));
-            var randPosY = Math.floor((Math.random()*bodyHeight));
-            $(element).css({
-                'left': randPosX,
-                'top': randPosY,
-                'background': 'black',
-                'height': '25px',
-                'width': '25px',
-                'position': 'relative'
-            });
-            
-            var squarePos = $(element).position();
-            console.log("Square width: " + squarePos.left + " - " + (squarePos.left + 25) +
-        " Square height: " + squarePos.top + " - " + (squarePos.top + 25))
-            if( (squarePos.left >= rectanglePos.left) &&
-            ((squarePos.left + 25) <= (rectangle.left + 400)) &&
-            (squarePos.top >= rectanglePos.top) &&
-            ((squarePos.top + 25) <= (rectanglePos.top + 200)) ){
-                squaresIN ++;
-                console.log("Squares in: " + squaresIN)
-            }
-        });
-    }
-$( document ).on( "mousemove", function( event ) {
-  $( "#log" ).text( "pageX: " + event.pageX + ", pageY: " + event.pageY );
+function addShape(x, y){
+    var shape = '<div id="rectangle"></div>'
+    $(".shapes").append(shape);
+    console.log(x, y);
+    $("#rectangle").css('top', y);
+    $("#rectangle").css('left', x);
+
+}
+$(document).click(function(e){
+    $('.shapes').empty();
+    var x = e.pageX;
+    var y = e.pageY;
+    addShape(x, y);
 });
 
 </script>
 </head>
 <body>
-    <button id="start" onclick="addShapes()">Launch</button>
-    <div id="rectangle"></div>
-    <div class="squares"></div>
-    <div id="log"></div>
+ <div id="rectangle"></div>
 </body>
 </html>
