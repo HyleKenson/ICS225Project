@@ -21,16 +21,6 @@
 <script>
 
     function addShapes(){
-        var rectanglePos = $("#rectangle").position();
-        var rectangleLeft = rectangle.left;
-        var rectangleRight = +rectangle.left
-        var rectangleRight = rectangle.left + 400;
-        var rectangleTop = rectangle.top;
-        var rectangleBot = +rectangleTop;
-        var rectangleBot = rectangleTop + 200;
-        console.log("Rectangle width: " + rectanglePos.left + " - " + (rectanglePos.left + 400) +
-        " Rectangle height: " + rectanglePos.top + " - " + (rectanglePos.top + 200))
-        
         var sqrsIN = 0;
         var sqr1 = '<div id="sqr1"></div>';
         var sqr2 = '<div id="sqr2"></div>';
@@ -47,7 +37,11 @@
         var bodyHeight = document.body.clientHeight;
         var shapesIDArray = ["#sqr1", "#sqr2", "#sqr3", "#sqr4", "#sqr5",
         "#sqr6", "#sqr7", "#sqr8", "#sqr9", "#sqr10"]
-
+        
+        rectangleLeft = 300;
+        rectangleRight = 700;
+        rectangleTop = 300;
+        rectangleBot = 500;
         shapesIDArray.forEach(element => {
             var randPosX = Math.floor((Math.random()*bodyWidth));
             var randPosY = Math.floor((Math.random()*bodyHeight));
@@ -60,15 +54,16 @@
                 'position': 'relative'
             });
             
-            var sqrPos = $(element).position();
-            var sqrLeft = sqrPos.left;
-            var sqrRight = +sqrLeft + 25;
-            var sqrTop = sqrPos.top;
-            var sqrBot = +sqrTop + 25;
-            console.log("Square width: " + sqrPos.left + " - " + sqrRight +
-            " Square height: " + sqrTop + " - " + sqrBot)
-            if(sqrLeft >= rectangleLeft){
-                console.log("test");
+            var sqrLeft = randPosX;
+            var sqrRight = sqrLeft + 25;
+            var sqrTop = randPosY;
+            var sqrBot = sqrTop + 25;
+            if(sqrLeft >= rectangleLeft && sqrRight <= rectangleRight){
+                sqrsIN ++;
+                console.log(sqrsIN);
+            }
+            if(sqrTop >= rectangleTop && sqrBot <= rectangleBot){
+                console.log("test")
             }
         });
     }
