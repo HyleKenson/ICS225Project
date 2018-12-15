@@ -58,22 +58,19 @@
             var sqrRight = sqrLeft + 25;
             var sqrTop = randPosY;
             var sqrBot = sqrTop + 25;
-            if(sqrLeft >= rectangleLeft && sqrRight <= rectangleRight){
+            if(sqrLeft >= rectangleLeft && sqrRight <= rectangleRight &&
+            sqrTop >= rectangleTop && sqrBot <= rectangleBot){
                 sqrsIN ++;
-                console.log(sqrsIN);
+                console.log("Squares in: " + sqrsIN + element);
             }
-            if(sqrTop >= rectangleTop && sqrBot <= rectangleBot){
-                console.log("test")
-            }
+        $("#squaresin").html(sqrsIN + "/10")
         });
     }
-$( document ).on( "mousemove", function( event ) {
-  $( "#log" ).text( "pageX: " + event.pageX + ", pageY: " + event.pageY );
-});
 
 </script>
 </head>
 <body>
+    <p id="squaresin">0/10</p>
     <button id="start" onclick="addShapes()">Launch</button>
     <div id="rectangle"></div>
     <div class="sqrs"></div>
