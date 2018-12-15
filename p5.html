@@ -2,11 +2,97 @@
 <html>
 <head>
     <title>Resume</title>
+<style>
+    body {
+        background-color: beige;
+    }
+
+    p {
+        font-family: "Times New Roman", Times, serif;
+    }
+
+    #name {
+        font-size: 300%;
+    }
+
+    #contact {
+        font-size: 150%;
+        border-bottom: 3px solid black;
+    }
+
+    .experience {
+        font-size: 200%;
+        border-bottom: 3px solid black;
+    }
+
+    .company {
+        font-size: 150%;
+        display: none;
+    }
+    .jobtitle {
+        font-size: 125%;
+        font-weight: bold;
+        display: none;
+
+    }
+    .task {
+        font-size: 100%;
+        display: none;
+    }
+
+    .skills {
+        font-size: 200%;
+        border-bottom: 3px solid black;
+    }
+
+    .subject {
+        font-size: 150%;
+        font-weight: bold;
+        display: none;
+    }
+    .skill {
+        font-size: 125%;
+        display: none;
+    }
+
+    .education {
+        font-size: 200%;
+        border-bottom: 3px solid black;
+    }
+
+    .degree {
+        font-size: 150%;
+        display: none;
+    }
+    .school {
+        font-size: 125%;
+        font-weight: bold;
+        display: none;
+    }
+    .extra {
+        font-size: 100%;
+        display: none;
+    }
+
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-  $("button").click(function(){
-    $("#div1").fadeToggle();
+  $(".experience").mouseover(function(){
+    $(".company").fadeToggle("slow");
+    $(".jobtitle").fadeToggle("slow");
+    $(".task").fadeToggle("slow");
+  });
+
+  $(".skills").mouseover(function(){
+    $(".subject").fadeToggle("slow");
+    $(".skill").fadeToggle("slow");
+  });
+
+  $(".education").mouseover(function(){
+    $(".degree").fadeToggle("slow");
+    $(".school").fadeToggle("slow");
+    $(".extra").fadeToggle("slow");
   });
 });
 </script>
@@ -14,21 +100,34 @@ $(document).ready(function(){
 <body>
 <p id="name">Kyle Henson</p>
 <p id="contact">Kyle495@gmail.com | (815) 409-2869 | Minneapolis, MN</p>
-<p id="experience">Work Experience</p>
+<p class="experience">Work Experience</p>
     <p class="company">RJM Construction</p>
-        <p class="jobtitle">IT Specialist</p>
-            <p class="tasks">Managed deployment and support for all phones, computers, and software.</p>
-            <p class="tasks">Automation of various tasks such as user onboarding, system configurations, and notifications.</p>
-            <p class="tasks">Ensured information security through educating employees and monitoring systems.</p>
-            <p class="tasks"></p>
+        <p class="jobtitle">IT Specialist | September 2016 - Present</p>
+            <p class="task">Managed deployment and support for all phones, computers, and software.</p>
+            <p class="task">Automation of various tasks such as user onboarding, system configurations, and notifications.</p>
+            <p class="task">Ensured information security through educating employees and monitoring systems.</p>
+            <p class="task">Documentation of systems, services, procedures, and instructions.</p>
     <p class="company">Fix My Busted Computer</p>
-        <p class="jobtitle">Technician</p>
-            <p class="tasks"></p>
+        <p class="jobtitle">Technician | August 2016 - May 2017</p>
+            <p class="task">Provided technical service and assistance for consumer computers, phones, and TV’s.</p>
     <p class="company">Hennepin County</p>
-        <p class="jobtitle">Web Team Intern</p>
-            <p class="tasks"></p>
-            <p class="tasks"></p>
-<p id="skills">Technical Skills</p>
-<p id="education">Education</p>
+        <p class="jobtitle">Web Team Intern | January 2015 - June 2015</p>
+            <p class="task">Maintained web content and documentation.</p>
+            <p class="task">Tested web applications on various operating systems.</p>
+<p class="skills">Technical Skills</p>
+    <p class="subject">Operating Systems</p>
+        <p class="skill">Windows 7/8/10, Windows Server 2003/2008/2012/2016, CentOS 6/7</p>
+    <p class="subject">Software/Services</p>
+        <p class="skill">Active Directory, Group Policy, WDS, MDT, WSUS, IIS, Hyper-V, Office 365, Exchange 2013, VMware, Maas360, Bitdefender, Citrix</p>
+    <p class="subject">Langauges</p>
+        <p class="skill">PowerShell, Python, SQL, JavaScript</p>
+<p class="education">Education</p>
+    <p class="degree">BS, Computer Information Technology, Cybersecurity Minor</p>
+        <p class="school">Metropolitan State University | Fall 2017 - Spring 2019</p>
+            <p class="extra">Captain - Collegiate Cyber Defense Competition 2019</p>
+            <p class="extra">Co-Captain - Collegiate Cyber Defense Competition 2018</p>
+            <p class="extra">Vice President - Cyber Security and Forensics Student Organization</p>
+    <p class="degree">AAS, Computer Support and Network Administration</p>
+        <p class="school">Minneapolis Community and Technical College | Fall 2014 - Spring 2017</p>
 </body>
 </html>
