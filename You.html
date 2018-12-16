@@ -41,15 +41,26 @@ li a:hover:not(.active) {
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
+var success = false;
+function getInfo(){
+    $.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
+        success = true;
+        var ip = data.geoplugin_request;
+        var city = data.geoplugin_city;
+        var state = data.geoplugin_regionName;
+        document.getElementById("ip").innerHTML = ip;
+        document.getElementById("city").innerHTML = city;
+        document.getElementById("state").innerHTML = state;
+    });
+}
 
-$.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
-    var ip = data.geoplugin_request;
-    var city = data.geoplugin_city;
-    var state = data.geoplugin_regionName;
-    console.log(ip, city, state);
-    console.log($.browser);
-});
+getInfo();
 
+setTimeout(function() {
+        if (!success){
+            alert("Please disable your adblocker so I can have your information."); 
+        }
+    }, 1000);
 </script>
 </head>
 <body>
@@ -57,10 +68,13 @@ $.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
   <li><a class="active" href="./Main.html">Home</a></li>
   <li><a href="./Resume.html">Resume</a></li>
   <li><a href="./Shapes.html">Game</a></li>
+  <li><a href="./Me.html">Me</a></li>
   <li><a href="./You.html">You</a></li>
-  <li><a href="#about">About</a></li>
   <li><a href="https://github.com/HyleKenson">GitHub</a></li>
 </ul>
-
+<br><br>
+<p id="ip"></p>
+<p id="city"></p>
+<p id="state"></p>
 </body>
 </html>
