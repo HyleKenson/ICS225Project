@@ -36,6 +36,10 @@ li a:hover:not(.active) {
 .active {
   background-color: rgb(5, 9, 233);
 }
+
+.mySlides {
+  display:none;
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -55,7 +59,35 @@ $.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
   <li><a class="active" href="./Main.html">Home</a></li>
   <li><a href="./Resume.html">Resume</a></li>
   <li><a href="./Shapes.html">Game</a></li>
+  <li><a href="./You.html">You</a></li>
   <li><a href="#about">About</a></li>
+  <li><a href="https://github.com/HyleKenson">GitHub</a></li>
 </ul>
+
+<div class="pictures" style="max-width:100%">
+  <img class="mySlides" src="./Pictures/1.JPG" style="width:100%" style="height: 100%">
+  <img class="mySlides" src="./Pictures/2.JPG" style="width:100%" style="height: 100%">
+  <img class="mySlides" src="./Pictures/3.JPG" style="width:100%" style="height: 100%">
+  <img class="mySlides" src="./Pictures/4.JPG" style="width:100%" style="height: 100%">
+  <img class="mySlides" src="./Pictures/5.JPG" style="width:100%" style="height: 100%">
+  <img class="mySlides" src="./Pictures/6.JPG" style="width:100%" style="height: 100%">
+  <img class="mySlides" src="./Pictures/7.JPG" style="width:100%" style="height: 100%">
+</div>
+<script>
+var slideIndex = 0;
+slider();
+
+function slider() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none"; 
+    }
+    slideIndex++;
+    if (slideIndex > x.length) {slideIndex = 1} 
+    x[slideIndex-1].style.display = "block"; 
+    setTimeout(slider, 5000); 
+}
+</script>
 </body>
 </html>
