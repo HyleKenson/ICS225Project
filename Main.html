@@ -41,10 +41,11 @@ li a:hover:not(.active) {
 <script>
 
 $.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
-    console.log(data);
     var ip = data.geoplugin_request;
-    console.log(ip);
-
+    var city = data.geoplugin_city;
+    var state = data.geoplugin_regionName;
+    console.log(ip, city, state);
+    console.log($.browser);
 });
 
 </script>
