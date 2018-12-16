@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    margin:0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: rgb(5, 9, 233);
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+$.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
+    console.log(data);
+    var ip = data.geoplugin_request;
+    console.log(ip);
+
+});
+
+</script>
+</head>
+<body>
+<ul>
+  <li><a class="active" href="./Main.html">Home</a></li>
+  <li><a href="./Resume.html">Resume</a></li>
+  <li><a href="./Shapes.html">Game</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+</body>
+</html>

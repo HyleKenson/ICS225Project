@@ -3,20 +3,51 @@
 <head>
     <title>Resume</title>
 <style>
-    body {
-        background-color: beige;
-    }
+body {
+    margin:0;
+    background-color: aliceblue;
+}
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: rgb(5, 9, 233);
+}
     p {
         font-family: "Times New Roman", Times, serif;
     }
 
     #name {
-        font-size: 300%;
+        font-size: 250%;
     }
 
     #contact {
-        font-size: 150%;
+        font-size: 125%;
         border-bottom: 3px solid black;
     }
 
@@ -98,8 +129,14 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+<ul>
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="./Resume.html">Resume</a></li>
+    <li><a href="./Shapes.html">Shapes Game</a></li>
+    <li><a href="#about">About</a></li>
+</ul>
 <p id="name">Kyle Henson</p>
-<p id="contact">Kyle495@gmail.com | (815) 409-2869 | Minneapolis, MN</p>
+<p id="contact">Kyle495@gmail.com | (815) 409-2869 |  https://github.com/HyleKenson</p>
 <p class="experience">Work Experience</p>
     <p class="company">RJM Construction</p>
         <p class="jobtitle">IT Specialist | September 2016 - Present</p>
