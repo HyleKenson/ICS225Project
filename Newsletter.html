@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    margin:0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: rgb(5, 9, 233);
+}
+
+input[type=text], input[type=password], select {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.parent {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+.child {
+    align-content: center;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 5px;
+    display: inline-block;
+    width: 25%;
+    height: 70%;
+    top: 30%;
+}
+
+#title{
+    font-size: 200%;
+    color: black;
+    font-family: "Arial";
+}
+
+#description{
+    font-size: 150%;
+    color: black;
+    font-family: "Arial";
+}
+
+#signup{
+    width: 25%;
+    font-size: 120%;
+    font-family: "Arial";
+}
+
+#notifications{
+    font-size: 100%;
+    font-family: "Arial";
+}
+
+body {
+    background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    function signUp(){
+        var email = document.getElementById("Email").value;
+        var reg = /[^@]+@[^\.]+\..+/g;
+        var password = document.getElementById("password").value;
+        if(email.match(reg) && password != ""){
+            alert("Thank you for signing for my newsletter!")
+        } else{
+            alert("Please enter a valid email address and password.")
+        }
+    }
+</script>
+</head>
+<body>
+<ul>
+  <li><a class="active" href="./Index.html">Home</a></li>
+  <li><a href="./Resume.html">Resume</a></li>
+  <li><a href="./Shapes.html">Game</a></li>
+  <li><a href="./Newsletter.html">Newsletter</a></li>
+  <li><a href="./Info.html">Info</a></li>
+  <li><a href="https://github.com/HyleKenson">GitHub</a></li>
+</ul>
+<br>
+<div class="parent">
+    <div class="child">
+        <p id="title">Newsletter</p>
+        <p id="description">Sign Up</p>
+        <input type="text" id="Email" placeholder="Email...">
+        <br>
+        <input type="password" id="password" placeholder="Password...">
+        <br>
+        <label for="notifications" id="notifications">Recieve Notifications</label>
+        <input type="checkbox" name="notifications" id="notificationsBox" value="notifications">
+        <br><br>
+        <input type="submit" id="signup" value="Sign Up" onclick="signUp();">
+    </div>
+</div>
+</body>
+</html>

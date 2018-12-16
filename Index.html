@@ -40,31 +40,39 @@ li a:hover:not(.active) {
 .mySlides {
   display:none;
 }
+
+.centered {
+  font-size: 400%;
+  position: absolute;
+  text-align: center;
+  color: white;
+  text-shadow: 0 1px 0 black;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container {
+  position: relative;
+  max-width: 100%;
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-
-$.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
-    var ip = data.geoplugin_request;
-    var city = data.geoplugin_city;
-    var state = data.geoplugin_regionName;
-    console.log(ip, city, state);
-    console.log($.browser);
-});
 
 </script>
 </head>
 <body>
 <ul>
-  <li><a class="active" href="./Main.html">Home</a></li>
+  <li><a class="active" href="./Index.html">Home</a></li>
   <li><a href="./Resume.html">Resume</a></li>
   <li><a href="./Shapes.html">Game</a></li>
-  <li><a href="./Me.html">Me</a></li>
-  <li><a href="./You.html">You</a></li>
+  <li><a href="./Newsletter.html">Newsletter</a></li>
+  <li><a href="./Info.html">Info</a></li>
   <li><a href="https://github.com/HyleKenson">GitHub</a></li>
 </ul>
-
-<div class="pictures" style="max-width:100%">
+<br><br>
+<div class="container">
+  <div class="centered">Kyle Henson</div>
   <img class="mySlides" src="./Pictures/1.JPG" style="width:100%" style="height: 100%">
   <img class="mySlides" src="./Pictures/2.JPG" style="width:100%" style="height: 100%">
   <img class="mySlides" src="./Pictures/3.JPG" style="width:100%" style="height: 100%">
@@ -73,6 +81,7 @@ $.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
   <img class="mySlides" src="./Pictures/6.JPG" style="width:100%" style="height: 100%">
   <img class="mySlides" src="./Pictures/7.JPG" style="width:100%" style="height: 100%">
 </div>
+
 <script>
 var slideIndex = 0;
 slider();
